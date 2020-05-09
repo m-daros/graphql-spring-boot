@@ -1,9 +1,8 @@
 package mdaros.training.graphql.spring.boot.service;
 
-import io.leangen.graphql.annotations.GraphQLArgument;
-import io.leangen.graphql.annotations.GraphQLMutation;
-import io.leangen.graphql.annotations.GraphQLQuery;
-import io.leangen.graphql.annotations.GraphQLSubscription;
+import com.cosium.spring.data.jpa.entity.graph.domain.DynamicEntityGraph;
+import io.leangen.graphql.annotations.*;
+import io.leangen.graphql.execution.ResolutionEnvironment;
 import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import io.leangen.graphql.spqr.spring.util.ConcurrentMultiMap;
 import mdaros.training.graphql.spring.boot.model.Author;
@@ -14,14 +13,16 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 
+
 @GraphQLApi
 @Service
-public class AuthorService {
+public class AuthorService extends AbstractService {
 
 	@Autowired
 	private AuthorRepository authorRepository;
 
 	private ConcurrentMultiMap<String, FluxSink<Author>> subscribers;
+
 
 	public AuthorService () {
 
@@ -29,16 +30,20 @@ public class AuthorService {
 	}
 
 	@GraphQLQuery ( name = "authors" )
-	public Iterable<Author> getAuthors () {
+	public Iterable<Author> getAuthors ( @GraphQLEnvironment ResolutionEnvironment env ) {
 
-		return authorRepository.findAll ();
+		DynamicEntityGraph entityGraph = buildDynamicEntityGraph ( env );
+
+		return authorRepository.findAll ( entityGraph );
 	}
 
 	@GraphQLQuery ( name = "author" )
-	public Author getAuthor ( @GraphQLArgument ( name = "id" ) Long id ) {
+	public Author getAuthor ( @GraphQLArgument ( name = "id" ) Long id, @GraphQLEnvironment ResolutionEnvironment env ) {
+
+		DynamicEntityGraph entityGraph = buildDynamicEntityGraph ( env );
 
 		// TODO Handle NOT FOUND
-		return authorRepository.findById ( id ).get ();
+		return authorRepository.findById ( id, entityGraph ).get ();
 	}
 
 	@GraphQLMutation ( name = "saveAuthor" )

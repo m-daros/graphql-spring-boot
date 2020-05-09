@@ -1,47 +1,49 @@
 package mdaros.training.graphql.spring.boot.service;
 
+import com.cosium.spring.data.jpa.entity.graph.domain.DynamicEntityGraph;
 import io.leangen.graphql.annotations.*;
+import io.leangen.graphql.execution.ResolutionEnvironment;
 import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import io.leangen.graphql.spqr.spring.util.ConcurrentMultiMap;
-import mdaros.training.graphql.spring.boot.model.Author;
 import mdaros.training.graphql.spring.boot.model.Book;
 import mdaros.training.graphql.spring.boot.repository.BookRepository;
 import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 
-import java.util.List;
-import java.util.Observable;
 
 @GraphQLApi
 @Service
-public class BookService {
+public class BookService extends AbstractService {
+
+	@Autowired
+	private BookRepository bookRepository;
 
 	private ConcurrentMultiMap<String, FluxSink<Book>> subscribers;
+
 
 	public BookService () {
 
 		subscribers = new ConcurrentMultiMap<> ();
 	}
 
-	@Autowired
-	private BookRepository bookRepository;
-
-
 	@GraphQLQuery ( name = "books" )
-	public Iterable<Book> getBooks () {
+	public Iterable<Book> getBooks ( @GraphQLEnvironment ResolutionEnvironment env ) {
 
-		return bookRepository.findAll ();
+		DynamicEntityGraph entityGraph = buildDynamicEntityGraph ( env );
+
+		return bookRepository.findAll ( entityGraph );
 	}
 
 	@GraphQLQuery ( name = "book" )
-	public Book getBook ( @GraphQLArgument ( name = "id" ) Long id ) {
+	public Book getBook ( @GraphQLArgument ( name = "id" ) Long id, @GraphQLEnvironment ResolutionEnvironment env ) {
+
+		DynamicEntityGraph entityGraph = buildDynamicEntityGraph ( env );
 
 		// TODO Handle NOT FOUND
-		return bookRepository.findById ( id ).get ();
+		return bookRepository.findById ( id, entityGraph ).get ();
 	}
 
 	@GraphQLMutation ( name = "saveBook" )

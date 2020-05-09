@@ -1,5 +1,6 @@
 package mdaros.training.graphql.spring.boot;
 
+import com.cosium.spring.data.jpa.entity.graph.repository.support.EntityGraphJpaRepositoryFactoryBean;
 import mdaros.training.graphql.spring.boot.model.Author;
 import mdaros.training.graphql.spring.boot.model.Book;
 import mdaros.training.graphql.spring.boot.repository.AuthorRepository;
@@ -10,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
 @SpringBootApplication
 @EnableWebSocket
+@EnableJpaRepositories ( repositoryFactoryBeanClass = EntityGraphJpaRepositoryFactoryBean.class )
 public class GraphqlSpringBootApplication implements CommandLineRunner {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger ( GraphqlSpringBootApplication.class );

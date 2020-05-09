@@ -1,8 +1,8 @@
 package mdaros.training.graphql.spring.boot.repository;
 
+import com.cosium.spring.data.jpa.entity.graph.repository.EntityGraphCrudRepository;
 import mdaros.training.graphql.spring.boot.model.Author;
-import org.springframework.data.repository.CrudRepository;
 
-public interface AuthorRepository extends CrudRepository<Author, Long> {
+public interface AuthorRepository extends EntityGraphCrudRepository<Author, Long> {
 
 }
