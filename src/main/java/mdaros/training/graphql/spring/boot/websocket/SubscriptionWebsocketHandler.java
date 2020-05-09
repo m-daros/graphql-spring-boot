@@ -10,7 +10,6 @@ public class SubscriptionWebsocketHandler implements WebSocketHandler {
 	@Override
 	public void afterConnectionEstablished ( WebSocketSession webSocketSession ) throws Exception {
 
-		// TODO ...
 	}
 
 	@Override
@@ -22,13 +21,11 @@ public class SubscriptionWebsocketHandler implements WebSocketHandler {
 	@Override
 	public void handleTransportError ( WebSocketSession webSocketSession, Throwable throwable ) throws Exception {
 
-		// TODO ...
 	}
 
 	@Override
 	public void afterConnectionClosed ( WebSocketSession webSocketSession, CloseStatus closeStatus ) throws Exception {
 
-		// TODO ...
 	}
 
 	@Override

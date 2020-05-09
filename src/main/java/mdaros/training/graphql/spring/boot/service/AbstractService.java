@@ -1,6 +1,7 @@
 package mdaros.training.graphql.spring.boot.service;
 
 import com.cosium.spring.data.jpa.entity.graph.domain.DynamicEntityGraph;
+import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraph;
 import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraphType;
 import graphql.schema.DataFetchingFieldSelectionSet;
 import graphql.schema.SelectedField;
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class AbstractService {
 
-	protected DynamicEntityGraph buildDynamicEntityGraph ( @GraphQLEnvironment ResolutionEnvironment env ) {
+	protected EntityGraph buildDynamicEntityGraph ( @GraphQLEnvironment ResolutionEnvironment env ) {
 
 		DataFetchingFieldSelectionSet selection = env.dataFetchingEnvironment.getSelectionSet ();
 		List<SelectedField> selectedFields = selection.getFields ();

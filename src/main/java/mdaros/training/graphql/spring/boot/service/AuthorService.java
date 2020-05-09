@@ -1,6 +1,6 @@
 package mdaros.training.graphql.spring.boot.service;
 
-import com.cosium.spring.data.jpa.entity.graph.domain.DynamicEntityGraph;
+import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraph;
 import io.leangen.graphql.annotations.*;
 import io.leangen.graphql.execution.ResolutionEnvironment;
 import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
@@ -32,7 +32,7 @@ public class AuthorService extends AbstractService {
 	@GraphQLQuery ( name = "authors" )
 	public Iterable<Author> getAuthors ( @GraphQLEnvironment ResolutionEnvironment env ) {
 
-		DynamicEntityGraph entityGraph = buildDynamicEntityGraph ( env );
+		EntityGraph entityGraph = buildDynamicEntityGraph ( env );
 
 		return authorRepository.findAll ( entityGraph );
 	}
@@ -40,7 +40,7 @@ public class AuthorService extends AbstractService {
 	@GraphQLQuery ( name = "author" )
 	public Author getAuthor ( @GraphQLArgument ( name = "id" ) Long id, @GraphQLEnvironment ResolutionEnvironment env ) {
 
-		DynamicEntityGraph entityGraph = buildDynamicEntityGraph ( env );
+		EntityGraph entityGraph = buildDynamicEntityGraph ( env );
 
 		// TODO Handle NOT FOUND
 		return authorRepository.findById ( id, entityGraph ).get ();

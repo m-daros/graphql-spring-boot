@@ -1,6 +1,6 @@
 package mdaros.training.graphql.spring.boot.service;
 
-import com.cosium.spring.data.jpa.entity.graph.domain.DynamicEntityGraph;
+import com.cosium.spring.data.jpa.entity.graph.domain.EntityGraph;
 import io.leangen.graphql.annotations.*;
 import io.leangen.graphql.execution.ResolutionEnvironment;
 import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
@@ -32,7 +32,7 @@ public class BookService extends AbstractService {
 	@GraphQLQuery ( name = "books" )
 	public Iterable<Book> getBooks ( @GraphQLEnvironment ResolutionEnvironment env ) {
 
-		DynamicEntityGraph entityGraph = buildDynamicEntityGraph ( env );
+		EntityGraph entityGraph = buildDynamicEntityGraph ( env );
 
 		return bookRepository.findAll ( entityGraph );
 	}
@@ -40,7 +40,7 @@ public class BookService extends AbstractService {
 	@GraphQLQuery ( name = "book" )
 	public Book getBook ( @GraphQLArgument ( name = "id" ) Long id, @GraphQLEnvironment ResolutionEnvironment env ) {
 
-		DynamicEntityGraph entityGraph = buildDynamicEntityGraph ( env );
+		EntityGraph entityGraph = buildDynamicEntityGraph ( env );
 
 		// TODO Handle NOT FOUND
 		return bookRepository.findById ( id, entityGraph ).get ();
@@ -75,11 +75,4 @@ public class BookService extends AbstractService {
 
 		return Flux.create ( subscriber -> subscribers.add ( "" + id, subscriber.onDispose ( () -> subscribers.remove ( "" + id, subscriber ) ) ), FluxSink.OverflowStrategy.LATEST );
 	}
-
-	//	@GraphQLQuery ( name = "book" )
-//	public Book getBook ( @GraphQLArgument ( name = "id" ) Long id, @GraphQLContext Author author ) {
-//
-//		// TODO Handle NOT FOUND
-//		return bookRepository.findById ( id ).get ();
-//	}
 }
