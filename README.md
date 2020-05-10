@@ -28,7 +28,7 @@ mvn spring-boot:run
 
 
 
-### GraphQL GUI
+### GraphQL Playground
 
 You can interact with GraphQL endpoint and send some queries using GraphQL Playground exposed at this url:  http://localhost:8080/gui
 
@@ -44,7 +44,7 @@ Thanks to the ability to explicitly declare the required fields and relations in
 
 
 
-**GraphQL**   <img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/graphql.png" alt="graphql" style="zoom:50%;" />
+**GraphQL**   <img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/graphql.png" alt="graphql" style="zoom:40%;" />
 
 https://graphql.org/
 
