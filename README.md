@@ -28,7 +28,7 @@ mvn spring-boot:run
 
 
 
-### GraphQL Playground
+## GraphQL Playground
 
 You can interact with GraphQL endpoint and send some queries using GraphQL Playground exposed at this url:  http://localhost:8080/gui
 
