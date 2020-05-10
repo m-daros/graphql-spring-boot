@@ -15,14 +15,11 @@ public class Book implements Identifiable<Long> {
 	@Column ( name = "ID", nullable = false)
 	@GenericGenerator ( name = "assigned-identity", strategy = "mdaros.training.graphql.spring.boot.model.support.AssignableIdGenarator" )
 	@GeneratedValue ( generator = "assigned-identity", strategy = GenerationType.AUTO )
-//	@GeneratedValue ( strategy = GenerationType.AUTO )
 	private Long id;
 
 	@Column ( name = "TITLE" )
 	private String title;
 
-//	@ManyToOne ( fetch = FetchType.LAZY ) // TODO APprofondire come usare Lazy e fare join solo quando serve
-	@ManyToOne ( fetch = FetchType.EAGER ) // TODO APprofondire come usare Lazy e fare join solo quando serve
-//	@GraphQLQuery ( name = "author" )
+	@ManyToOne
 	private Author author;
 }

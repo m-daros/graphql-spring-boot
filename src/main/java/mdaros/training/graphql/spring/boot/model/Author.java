@@ -15,7 +15,6 @@ public class Author implements Identifiable<Long> {
 	@Column ( name = "ID", nullable = false)
 	@GenericGenerator ( name = "assigned-identity", strategy = "mdaros.training.graphql.spring.boot.model.support.AssignableIdGenarator" )
 	@GeneratedValue ( generator = "assigned-identity", strategy = GenerationType.AUTO )
-//	@GeneratedValue ( strategy = GenerationType.AUTO )
 	private Long id;
 
 	@Column ( name = "NAME" )
