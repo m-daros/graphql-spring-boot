@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
+
 @SpringBootApplication
 @EnableWebSocket
 @EnableJpaRepositories ( repositoryFactoryBeanClass = EntityGraphJpaRepositoryFactoryBean.class )
@@ -35,8 +36,13 @@ public class GraphqlSpringBootApplication implements CommandLineRunner {
 	@Override
 	public void run ( String ... args ) throws Exception {
 
-		Author author1 = new Author ( null, "Aldo", "Bianchi" );
-		Author author2 = new Author ( null, "Roberto", "Rossi" );
+		Author author1 = new Author ( 1L, "Aldo", "Bianchi", null );
+		Author author2 = new Author ( 2L, "Roberto", "Rossi", null );
+
+		Book book1 = new Book ( 1L, "La vita è bella", author1 );
+		Book book2 = new Book ( 2L, "Paura del buio", author2 );
+		Book book3 = new Book ( 3L, "Pinocchio", author1 );
+		Book book4 = new Book ( 4L, "Pollicino", author2 );
 
 		authorRepository.save ( author1 );
 		LOGGER.info ( "Saved author {}", author1 );
@@ -44,13 +50,16 @@ public class GraphqlSpringBootApplication implements CommandLineRunner {
 		authorRepository.save ( author2 );
 		LOGGER.info ( "Saved author {}", author2 );
 
-		Book book1 = new Book ( null, "La vita è bella", author1 );
-		Book book2 = new Book ( null, "Paura del buio", author2 );
-
 		bookRespository.save ( book1 );
 		LOGGER.info ( "Saved book {}", book1 );
 
 		bookRespository.save ( book2 );
 		LOGGER.info ( "Saved book {}", book2 );
+
+		bookRespository.save ( book3 );
+		LOGGER.info ( "Saved book {}", book3 );
+
+		bookRespository.save ( book4 );
+		LOGGER.info ( "Saved book {}", book4 );
 	}
 }					

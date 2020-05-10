@@ -21,5 +21,6 @@ public class Book implements Identifiable<Long> {
 	private String title;
 
 	@ManyToOne
+	@JoinColumn ( name = "AUTHOR_ID" )
 	private Author author;
 }

@@ -5,6 +5,7 @@ import mdaros.training.graphql.spring.boot.model.support.Identifiable;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table ( name = "AUTHOR" )
@@ -22,4 +23,9 @@ public class Author implements Identifiable<Long> {
 
 	@Column ( name = "SURNAME" )
 	private String surname;
+
+	@OneToMany ( mappedBy = "author" )
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	private Set<Book> publishedBooks;
 }
