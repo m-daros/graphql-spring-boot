@@ -1,5 +1,9 @@
 # graphql-spring-boot
 
+**Playing and experimenting with GraphQL and JPA**
+
+
+
 The aim of this project is to experiment **GraphQL** features in order to evaluate its potentialities.
 
 The project is a Spring Boot application exposing a GraphQL endpoint using **graphql-java**
@@ -44,9 +48,11 @@ Thanks to the ability to explicitly declare the required fields and relations in
 
 
 
-**GraphQL**   <img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/graphql.png" alt="graphql" style="zoom:40%;" />
+**GraphQL**   
 
 https://graphql.org/
+
+<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/graphql.png" alt="graphql" style="zoom:35%;" />
 
 
 
