@@ -38,11 +38,37 @@ You can interact with GraphQL endpoint and send some queries using GraphQL Playg
 
 
 
+Here are sample queries
+
+Retrieving attributes both from a book and from the book's author
+
+![query-with-join](https://github.com/m-daros/graphql-spring-boot/blob/master/docs/query-with-join.png)
+
+
+
+and retrieving only book's attributes
+
+![query-without-join](https://github.com/m-daros/graphql-spring-boot/blob/master/docs/query-without-join.png)
+
+
+
 ## Dynamic Entity Graphs
 
 Thanks to the ability to explicitly declare the required fields and relations in a GraphQL query, one of the features that are implemented in this project is the generation of dynamic Entity Graphs in order to perform the queries on the underlying DB having only the requided joins in order to fulfill the data structure required by client side.
 
 
+
+Lets see on log files what are the queries performed on DB by Hibernate for the GraphQL queries described above
+
+
+
+![hibernate-query-with-join](https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-with-join.png)
+
+
+
+
+
+![hibernate-query-without-join](https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-without-join.png)
 
 ## References
 
