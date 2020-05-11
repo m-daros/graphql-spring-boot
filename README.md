@@ -42,15 +42,15 @@ Here are sample queries
 
 Retrieving attributes both from a book and from the book's author
 
-![query-with-join](https://github.com/m-daros/graphql-spring-boot/blob/master/docs/query-with-join.png)
 
 
+<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/query-with-join.png" alt="query-with-join" style="zoom:67%;" />
 
 and retrieving only book's attributes
 
-![query-without-join](https://github.com/m-daros/graphql-spring-boot/blob/master/docs/query-without-join.png)
 
 
+<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/query-without-join.png" alt="query-without-join" style="zoom:67%;" />
 
 ## Dynamic Entity Graphs
 
@@ -60,19 +60,13 @@ Thanks to the ability to explicitly declare the required fields and relations in
 
 Lets see on log files what are the queries performed on DB by Hibernate for the GraphQL queries described above
 
-
-
-![hibernate-query-with-join](https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-with-join.png)
-
+<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-with-join.png" alt="hibernate-query-with-join" style="zoom:67%;" />
 
 
 
-
-![hibernate-query-without-join](https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-without-join.png)
+<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-without-join.png" alt="hibernate-query-without-join" style="zoom:67%;" />
 
 ## References
-
-
 
 **GraphQL**   
 
