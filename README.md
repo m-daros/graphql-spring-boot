@@ -60,11 +60,11 @@ Thanks to the ability to explicitly declare the required fields and relations in
 
 Lets see on log files what are the queries performed on DB by Hibernate for the GraphQL queries described above
 
-<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-with-join.png" alt="hibernate-query-with-join" style="zoom:67%;" />
+<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-with-join.png" alt="hibernate-query-with-join" style="max-width:65%; height:auto" />
 
 
 
-<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-without-join.png" alt="hibernate-query-without-join" style="zoom:67%;" />
+<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-without-join.png" alt="hibernate-query-without-join" style="max-width:65%; height:auto" />
 
 ## References
 
@@ -72,7 +72,7 @@ Lets see on log files what are the queries performed on DB by Hibernate for the 
 
 https://graphql.org/
 
-<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/graphql.png" alt="graphql" style="zoom:35%;" />
+<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/graphql.png" alt="graphql" style="max-width:35%; height:auto" />
 
 
 
