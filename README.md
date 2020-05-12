@@ -60,11 +60,19 @@ Thanks to the ability to explicitly declare the required fields and relations in
 
 Lets see on log files what are the queries performed on DB by Hibernate for the GraphQL queries described above
 
+
+
+when the client requires attributes from both book and author
+
 <img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-with-join.png" alt="hibernate-query-with-join" />
 
 
 
+and when the client requires only book attributes
+
 <img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/hibernate-query-without-join.png" alt="hibernate-query-without-join" />
+
+
 
 ## References
 
@@ -72,7 +80,7 @@ Lets see on log files what are the queries performed on DB by Hibernate for the 
 
 https://graphql.org/
 
-<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/graphql.png" alt="graphql" style="max-width:35%; height:auto" />
+<img src="https://github.com/m-daros/graphql-spring-boot/blob/master/docs/graphql.png" alt="graphql" />
 
 
 
